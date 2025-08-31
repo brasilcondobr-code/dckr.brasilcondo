@@ -1,5 +1,6 @@
 # Environment variables
 .env
+application/.env
 
 # IDE/Editor specific
 .vscode/
@@ -7,12 +8,6 @@
 
 # System files
 .DS_Store
-Thumbs.db
 
-# WordPress core files and sensitive data
-wp-config.php
-wp-admin/
-wp-includes/
-wp-content/uploads/
-wp-content/upgrade/
-wp-content/cache/
+# Composer dependencies
+application/vendor/
