@@ -1,4 +1,5 @@
 
+
     DOCKER
 
         # Iniciar os containers
@@ -32,29 +33,25 @@
 
     URL     (Acesos)
 
-        WordPress (website)                             http://localhost
+        nginx (Servidor Web)
+                Acesso                                  http://localhost:8080/
 
-        WordPress (Painel Administrativo)               http://localhost/wp/wp-login.php
-                Usuario                                 wordpress_user
-                Password                                wordpress_password
+        
+        phpinfo (servidor Web)
+                Acesso                                  http://localhost:8080/phpinfo.php
 
-
-        phpMyAdmin                                      http://localhost:8080/
-                Usuario                                 wordpress_user
-                Password                                wordpress_password
-
-                Usuario                                 xdAdmin
-                Password                                ua8q476%qC0eVIfDC7
+        
+        phpMyAdmin                                      http://localhost:8081/
+                Usuario                                 user
+                Password                                password
 
 
-==========================================================================================================================
+        WordPress (website)                             xxxxxxxxxxxxxxxxxxxxxxxx
 
 
-
-
-==========================================================================================================================
-
-
+        WordPress (Painel Administrativo)               xxxxxxxxxxxxxxxxxxxxxxxx
+                Usuario                                 xxxxxxxxxxxxxxxxxxxxxxxx
+                Password                                xxxxxxxxxxxxxxxxxxxxxxxx
 
 
 ==========================================================================================================================
@@ -99,3 +96,12 @@
 
 ==========================================================================================================================
 
+
+
+
+==========================================================================================================================
+
+
+
+
+==========================================================================================================================
