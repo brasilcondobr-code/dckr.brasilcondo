@@ -1,42 +1,53 @@
-
 services:
-  nginx:
-    image: nginx:latest
+  app:
+    # Usa o Dockerfile do devcontainer que está preparado para Bedrock
+    build:
+      context: ./public/app_wp/.devcontainer
+      dockerfile: Dockerfile
+    volumes:
+      # Mapeia o projeto Bedrock para o diretório /roots/app dentro do container
+      - ./public/app_wp:/roots/app
+      - ./public/app_wp/.devcontainer/config/php.ini:/usr/local/etc/php/conf.d/bedrock.ini
+    depends_on:
+      - database
+    environment:
+      WP_CLI_ALLOW_ROOT: 1
+    container_name: dckrbrasilcondo-app-php
+
+  web:
+    image: nginx:alpine
     ports:
       - "8080:80"
     volumes:
-      - ./public:/var/www/html
-      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+      # Mapeia o projeto Bedrock (somente leitura)
+      - ./public/app_wp:/roots/app:ro
+      # Usa a configuração Nginx correta para Bedrock
+      - ./public/app_wp/.devcontainer/config/nginx.conf:/etc/nginx/conf.d/default.conf:ro
     depends_on:
-      - php
-  
-  php:
-    build: ./php
-    volumes:
-      - ./public:/var/www/html
-    container_name: dckrbrasilcondo-php
-  
-  mysql:
-    image: mysql:latest
+      - app
+    container_name: dckrbrasilcondo-web-nginx
+
+  database:
+    image: mariadb:11
     environment:
-      MYSQL_ROOT_PASSWORD: rootpassword
-      MYSQL_DATABASE: mydatabase
-      MYSQL_USER: user
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
       MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: password
     volumes:
       - mysql-data:/var/lib/mysql
-    ports:
-      - "3306:3306"
-  
+    container_name: dckrbrasilcondo-db-mariadb
+
   phpmyadmin:
     image: phpmyadmin:latest
     ports:
       - "8081:80"
     environment:
-      PMA_HOST: mysql
-      MYSQL_ROOT_PASSWORD: rootpassword
+      PMA_HOST: database
+      MYSQL_ROOT_PASSWORD: password
     depends_on:
-      - mysql
+      - database
+    container_name: dckrbrasilcondo-pma
 
 volumes:
   mysql-data:

@@ -5,6 +5,8 @@
         # Iniciar os containers
             $ docker-compose up -d
 
+                Phrase:     farfulaniadoasdrubal
+
         # Parar os containers
             $ docker-compose down
 
@@ -22,7 +24,7 @@
 
         Site Title										Brasil Condo
 		Username										xdAdmin
-		Password										ua8q476%qC0eVIfDC7
+		Password									    s^Ug!(1kd89DFehrBY	
 		Your Email										brasilcondo.br@gmail.com                                                Double-check your email address before continuing.
 															
 		Search engine visibility						[  ]  Discourage search engines from indexing this site                 It is up to search engines to honor this request.
@@ -42,7 +44,7 @@
 
         
         phpMyAdmin                                      http://localhost:8081/
-                Usuario                                 user
+                Usuario                                 wordpress
                 Password                                password
 
 
