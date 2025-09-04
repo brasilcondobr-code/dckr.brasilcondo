@@ -10,8 +10,8 @@ services:
       - ./public/app_wp/.devcontainer/config/php.ini:/usr/local/etc/php/conf.d/bedrock.ini
     depends_on:
       - database
-    environment:
-      WP_CLI_ALLOW_ROOT: 1
+    env_file:
+      - .env
     container_name: dckrbrasilcondo-app-php
 
   web:
@@ -29,22 +29,23 @@ services:
 
   database:
     image: mariadb:11
+    env_file:
+      - .env
     environment:
-      MYSQL_DATABASE: wordpress
-      MYSQL_USER: wordpress
-      MYSQL_PASSWORD: password
-      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
     volumes:
       - mysql-data:/var/lib/mysql
     container_name: dckrbrasilcondo-db-mariadb
 
   phpmyadmin:
     image: phpmyadmin:latest
+    env_file:
+      - .env
     ports:
       - "8081:80"
-    environment:
-      PMA_HOST: database
-      MYSQL_ROOT_PASSWORD: password
     depends_on:
       - database
     container_name: dckrbrasilcondo-pma

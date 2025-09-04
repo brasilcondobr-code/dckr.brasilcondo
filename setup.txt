@@ -16,7 +16,15 @@
         # Logs dos containers
             $ docker-compose logs
 
-        #Atualiza
+        # Gerar backup dos contêiners
+            $ docker images
+
+            Opção 1: Salvar todas as imagens em um único arquivo
+                $ docker save -o backup_imagens.tar $(docker images -q)
+
+            Como Restaurar o Backup (Opcional)
+                $ docker load -i backup_imagens.tar
+
 
 
 ==========================================================================================================================
@@ -26,7 +34,8 @@
 
         Site Title										Brasil Condo
 		Username										xdAdmin
-		Password									    s^Ug!(1kd89DFehrBY	
+		Password									    s^Ug!(1kd89DFehrBY
+                                                        phGmz2BvLJR(Px5)7q	
 		Your Email										brasilcondo.br@gmail.com                                                Double-check your email address before continuing.
 															
 		Search engine visibility						[  ]  Discourage search engines from indexing this site                 It is up to search engines to honor this request.
@@ -60,7 +69,23 @@
 
 ==========================================================================================================================
 
+MYSQL:
 
+    Server host:                127.0.0.1           (localhost)
+    Port:                       3306
+
+    Com base no seu arquivo docker-compose.yml, as credenciais de acesso ao MySQL (ou MariaDB, neste caso) são as seguintes:
+
+            Usuário: wordpress
+            Senha: password
+            Banco de Dados: wordpress
+
+    Além disso, o arquivo também especifica uma senha para o usuário root:
+
+            Usuário: root
+            Senha: password
+
+    Essas credenciais são definidas no serviço database, onde a imagem do MariaDB é configurada com as variáveis de ambiente MYSQL_USER, MYSQL_PASSWORD, MYSQL_DATABASE e MYSQL_ROOT_PASSWORD.
 
 
 ==========================================================================================================================
